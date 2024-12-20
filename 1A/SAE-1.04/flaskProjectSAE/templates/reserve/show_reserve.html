@@ -1,0 +1,53 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>montrer Reserve</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <a class="btn btn-add mb-2" href="/Reserve/add">
+        Ajouter
+        <i class="bi bi-plus-square"></i>
+    </a>
+    <table class="table text-center">
+        <thead>
+        <tr>
+            <th>Client</th>
+            <th>Horaire Reservation</th>
+            <th>Trajet</th>
+            <th>Voiture</th>
+            <th>Conducteur</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if Reserve | length >= 1 %}
+        {% for ligne in Reserve %}
+        <tr>
+            <td>
+                <a href="/Habitant/profile/{{ ligne.Id_Passager}}">{{ ligne.Passager }}</a>
+            </td>
+            <td>{{ ligne.Horaire_depart }}</td>
+            <td>{{ ligne.Trajet }}</td>
+            <td>{{ ligne.Immat }}</td>
+            <td>
+                <a href="/Habitant/profile/{{ ligne.Id_Conducteur}}">{{ ligne.Conducteur }}</a>
+            </td>
+            <td>
+                <a class="btn btn-op" href="/Reserve/delete?id={{ ligne.Id_Inscription }}&trajet={{ ligne.Id_trajet}}"
+                   onclick="return confirm('Etes-vous sur de vouloir annuler la réservation de {{ ligne.Passager }}?')">
+                    Annuler une Reservation
+                    <i class="bi bi-trash"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td>pas de reservation</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

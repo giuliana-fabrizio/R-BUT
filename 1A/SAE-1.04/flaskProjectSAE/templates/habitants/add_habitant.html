@@ -1,0 +1,51 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>ajouter Habitant</title>
+{% endblock %}
+
+{% block body %}
+<form method="post" action="/Habitant/add">
+    <fieldset class="container">
+        <legend class="text-center mb-3 fs-3">Ajouter un habitant</legend>
+
+        <label class="mb-2" for="nom">Nom :</label>
+        <input name="Nom" type="text" class="mb-2 rounded form-control" placeholder="saisir un nom" id="nom" required>
+
+        <label class="mb-2" for="prenom">Prénom :</label>
+        <input name="Prenom" type="text" class="mb-2 rounded form-control" placeholder="saisir un prénom" id="prenom"
+               required>
+
+        <label class="mb-2" for="adresse">Adresse :</label>
+        <input name="Adresse" type="text" class="mb-2 rounded form-control" placeholder="saisir une adresse"
+               id="adresse" required>
+
+        <label class="mb-2" for="dateNaissance">Date de naissance :</label>
+        <input name="Date_naissance" type="date" class="mb-2 rounded form-control"
+               placeholder="saisir une date de naissance" id="dateNaissance" required>
+
+        <label class="mb-2" for="telephone">Numéro de téléphone :</label>
+        <input name="Telephone" type="text" class="mb-2 rounded form-control" placeholder="saisir un téléphone"
+               id="telephone" required>
+
+        <label class="mb-2" for="id_ville">Nom de la ville :</label>
+        <select name="Id_ville" class="mb-2 rounded form-control" id="id_ville" required>
+            {% if ville | length >= 1 %}
+            {% for ligne in ville %}
+            <option value="{{ ligne.Id_ville }}">{{ ligne.Nom_ville }}</option>
+            {% endfor %}
+            {% else %}
+            <p>pas d'habitants</p>
+            {% endif %}
+        </select>
+        <button type="submit" class="btn btn_valider" name="valider">
+            Valider
+            <i class="bi bi-check2-square"></i>
+        </button>
+        <button type="reset" class="btn btn-outline-secondary" name="supprimer">
+            Réinitialiser
+            <i class="bi bi-arrow-clockwise"></i>
+        </button>
+    </fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,74 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+/* ********************************************************************************************************************* navigation */
+
+.bg_nav {
+    border: solid 2px rgb(79, 13, 49);
+}
+
+.bg_nav:hover {
+    color: white;
+    background: rgb(128, 65, 92);
+}
+
+.text_accueil {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 100px;
+}
+
+.img_accueil {
+    height: 150px;
+}
+
+/* ********************************************************************************************************************* show */
+
+.btn-add {
+    border: solid 1px gray;
+}
+
+.btn-add:hover {
+    background: #eeeeee;
+}
+
+.btn-op:hover {
+    border: solid 1px gray;
+    background: #eeeeee;
+    /*background: #f1d8a4;*/
+}
+
+tr {
+    border: solid 1px;
+}
+
+/* ********************************************************************************************************************* formulaire */
+
+.btn_valider {
+    color: black;
+    border: solid 1px plum;
+}
+
+.btn_valider:hover {
+    background: plum;
+}
+
+/* ********************************************************************************************************************* show_profile */
+
+.btn-card {
+    border: solid 1px plum;
+}
+
+.btn-card:hover {
+    background: plum;
+}
+
+.h4_profile {
+    margin: 20px 0px 15px 0px;
+}

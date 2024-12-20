@@ -1,0 +1,54 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>ajouter Vehicule</title>
+{% endblock %}
+
+{% block body %}
+<form method="post" action="/Vehicule/add">
+    <fieldset class="container">
+        <legend class="text-center mb-3 fs-3">Ajouter un vehicule</legend>
+        <label class="mb-2" for="Immat">Immat :</label>
+        <input name="Immat" type="text" class="mb-2 rounded form-control" placeholder="saisir une Immatriculation"
+               id="Immat" required>
+        <label class="mb-2" for="Id_marque">Id_marque :</label>
+        <select name="Id_marque" class="mb-2 rounded form-control" id="Id_marque" required>
+            {% if marque | length >= 1 %}
+            {% for ligne in marque %}
+            <option value="{{ ligne.Id_marque }}">{{ ligne.Nom_Marque }}</option>
+            {% endfor %}
+            {% else %}
+            <p>Pas d'Id marque</p>
+            {% endif %}
+        </select>
+        <label class="mb-2" for="Id_couleur">Id_couleur :</label>
+        <select name="Id_couleur" class="mb-2 rounded form-control" id="Id_couleur" required>
+            {% if couleur | length >= 1 %}
+            {% for ligne in couleur %}
+            <option value="{{ ligne.Id_couleur }}">{{ ligne.Nom_Couleur }}</option>
+            {% endfor %}
+            {% else %}
+            <p>Pas d'Id couleur</p>
+            {% endif %}
+        </select>
+        <label class="mb-2" for="Id_Inscription">Id_Inscription :</label>
+        <select name="Id_Inscription" class="mb-2 rounded form-control" id="Id_Inscription" required>
+            {% if habitant | length >= 1 %}
+            {% for ligne in habitant %}
+            <option value="{{ ligne.Id_Inscription }}">{{ ligne.Nom }}</option>
+            {% endfor %}
+            {% else %}
+            <p>Pas d'Id inscription</p>
+            {% endif %}
+        </select>
+        <button type="submit" class="btn btn_valider" name="valider">
+            Valider
+            <i class="bi bi-check2-square"></i>
+        </button>
+        <button type="reset" class="btn btn-outline-secondary" name="supprimer">
+            Réinitialiser
+            <i class="bi bi-arrow-clockwise"></i>
+        </button>
+    </fieldset>
+</form>
+{% endblock %}

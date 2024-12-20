@@ -1,0 +1,47 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>edit Reserve</title>
+{% endblock %}
+
+{% block body %}
+<form method="post" action="/Reserve/edit">
+    <fieldset class="container">
+
+        <legend class="text-center  mb-3 fs-3">Modifier une reservation</legend>
+
+
+        <label class="mb-2" for="Id_Trajet">Numero de trajet</label>
+        <select name="Id_Trajet" class="mb-2 rounded form-control" id="Id_Trajet">
+            {% if Trajet | length >= 1 %}
+            {% for ligne in Trajet %}
+            <option value="{{ ligne.Id_marque }}" {% if vehicule.Id_marque is defined and ligne.Id_marque==
+                    vehicule.Id_marque %} selected {% endif %}>{{ ligne.Nom_Marque }}
+            </option>
+            {% endfor %}
+            {% else %}
+            <p>pas de vehicule</p>
+            {% endif %}
+        </select>
+        <select name="Id_marque" class="mb-2 rounded form-control" id="Id_Hab">
+            {% if marque | length >= 1 %}
+            {% for ligne in marque %}
+            <option value="{{ ligne.Id_marque }}" {% if vehicule.Id_marque is defined and ligne.Id_marque==
+                    vehicule.Id_marque %} selected {% endif %}>{{ ligne.Nom_Marque }}
+            </option>
+            {% endfor %}
+            {% else %}
+            <p>pas de vehicule</p>
+            {% endif %}
+        </select>
+        <button type="submit" class="btn btn_valider" name="valider">
+            Valider
+            <i class="bi bi-check2-square"></i>
+        </button>
+        <button type="reset" class="btn btn-outline-secondary" name="supprimer">
+            Réinitialiser
+            <i class="bi bi-arrow-clockwise"></i>
+        </button>
+    </fieldset>
+</form>
+{% endblock %}

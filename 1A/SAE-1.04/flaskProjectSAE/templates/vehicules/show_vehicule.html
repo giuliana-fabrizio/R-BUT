@@ -1,0 +1,52 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>montrer Vehicule</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <a class="btn btn-add mb-2" href="/Vehicule/add">
+        Ajouter
+        <i class="bi bi-plus-square"></i>
+    </a>
+    <table class="table text-center">
+        <thead>
+        <tr>
+            <th>Immatriculation</th>
+            <th>Marque</th>
+            <th>Couleur</th>
+            <th>Nom de l'habitant</th>
+            <th>Opérations</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if vehicule | length >= 1 %}
+        {% for ligne in vehicule %}
+        <tr>
+            <td>{{ ligne.Immat }}</td>
+            <td>{{ ligne.Nom_Marque }}</td>
+            <td>{{ ligne.Nom_Couleur }}</td>
+            <td>{{ ligne.Nom }}</td>
+            <td>
+                <a class="btn btn-op" href="/Vehicule/edit/{{ ligne.Immat }}">
+                    Éditer
+                    <i class="bi bi-pencil-fill"></i>
+                </a>
+                <a class="btn btn-op" href="/Vehicule/delete?Immat={{ ligne.Immat }}"
+                   onclick="return confirm('Êtes vous sûrs de vouloir supprimer un habitant ?')">
+                    Supprimer
+                    <i class="bi bi-trash"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td>pas de vehicule</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

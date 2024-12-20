@@ -1,0 +1,110 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>profil Habitant</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card">
+        {# <img style="width: 40px; height: 40px" src="/static/images/{{ ligne.image }}" alt="{{ ligne.image }}">#}
+        <div class="card-body">
+            <h1 class="mb-3">{{ habitant.Nom }}</h1>
+            <h4 class="h4_profile">Informations :</h4>
+            <p class="text-card px-3">Ville :<span class="text-muted"> {{ habitant.Nom_ville }}</span></p>
+            <p class="text-card px-3">Adresse :<span class="text-muted"> {{ habitant.Adresse }}</span></p>
+            <p class="text-card px-3">Telephone :<span class="text-muted"> {{ habitant.Telephone }}</span></p>
+            <h4 class="h4_profile">Trajets recents :</h4>
+            <div class="p-2">
+                <a class="btn btn-sm btn-card mb-3" data-bs-toggle="collapse" href="#propose" role="button"
+                   aria-expanded="false" aria-controls="propose">Trajets proposés</a>
+                <a class="btn btn-sm btn-card mb-3" data-bs-toggle="collapse" href="#effectuer" role="button"
+                   aria-expanded="false" aria-controls="effectuer">Trajets effectués comme passager</a>
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse" id="propose">
+                            <div class="card card-body">
+                                {% if propose | length > 1 %}
+                                <table class="table text-center">
+                                    <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Voiture</th>
+                                        <th>Trajet</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for ligne in propose %}
+                                    <tr>
+                                        <th>{{ ligne.Horaire_depart }}</th>
+                                        <th>{{ ligne.Immat }}</th>
+                                        <th>{{ ligne.Trajet }}</th>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                {% else %}
+                                <p>Aucun trajet proposé</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="collapse" id="effectuer">
+                            <div class="card card-body">
+                                {% if effectuer | length > 1 %}
+                                <table class="table text-center">
+                                    <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Conducteur</th>
+                                        <th>Trajet</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for ligne in effectuer %}
+                                    <tr>
+                                        <th>{{ ligne.Horaire_depart }}</th>
+                                        <th>{{ ligne.Conducteur }}</th>
+                                        <th>{{ ligne.Trajet }}</th>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                {% else %}
+                                <p>Aucun trajet effectué</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="h4_profile">Véhicule(s) :</h4>
+            <div class="col-4">
+                {% if vehicules | length >= 1 %}
+                <table class="table text-center">
+                    <thead>
+                    <tr>
+                        <th>Immat</th>
+                        <th>Marque</th>
+                        <th>Couleur</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for ligne in vehicules %}
+                    <tr>
+                        <td class="text-card">{{ ligne.Immat }}</td>
+                        <td class="text-card">{{ ligne.Nom_Marque }}</td>
+                        <td class="text-card">{{ ligne.Nom_Couleur }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>Aucun Véhicule enregistré</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

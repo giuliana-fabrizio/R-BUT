@@ -1,0 +1,54 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>édit Habitants</title>
+{% endblock %}
+
+{% block body %}
+
+<form method="post" action="/Habitant/edit">
+    <fieldset class="container">
+        <legend class="text-center  mb-3 fs-3">Modifier le profil</legend>
+        <input name="Id_Inscription" type="hidden" value="{{ habitant.Id_Inscription }}"
+               class="mb-2 rounded form-control">
+
+        <label class="mb-2" for="nom">Nom :</label>
+        <input name="Nom" type="text" class="mb-2 rounded form-control" value="{{ habitant.Nom }}" id="nom">
+
+        <label class="mb-2" for="prenom">Prénom :</label>
+        <input name="Prenom" type="text" class="mb-2 rounded form-control" value="{{ habitant.Prenom }}" id="prenom">
+
+        <label class="mb-2" for="adresse">Adresse :</label>
+        <input name="Adresse" type="text" class="mb-2 rounded form-control" value="{{ habitant.Adresse }}" id="adresse">
+
+        <label class="mb-2" for="dateNaissance">Date de naissance :</label>
+        <input name="Date_naissance" type="date" class="mb-2 rounded form-control" value="{{ habitant.Date_naissance }}"
+               id="dateNaissance" required>
+
+        <label class="mb-2" for="telephone">Numéro de téléphone :</label>
+        <input name="Telephone" type="text" class="mb-2 rounded form-control" value="{{ habitant.Telephone }}"
+               id="telephone">
+
+        <label class="mb-2" for="id_ville">Nom de la ville</label>
+        <select name="Id_ville" class="mb-2 rounded form-control" id="id_ville">
+            {% if ville | length >= 1 %}
+            {% for ligne in ville %}
+            <option value="{{ ligne.Id_ville }}" {% if habitant.Id_ville is defined and ligne.Id_ville==
+                    habitant.Id_ville %} selected {% endif %}>{{ ligne.Nom_ville }}
+            </option>
+            {% endfor %}
+            {% else %}
+            <p>pas d'habitants</p>
+            {% endif %}
+        </select>
+        <button type="submit" class="btn btn_valider" name="valider">
+            Valider
+            <i class="bi bi-check2-square"></i>
+        </button>
+        <button type="reset" class="btn btn-outline-secondary" name="supprimer">
+            Réinitialiser
+            <i class="bi bi-arrow-clockwise"></i>
+        </button>
+    </fieldset>
+</form>
+{% endblock %}

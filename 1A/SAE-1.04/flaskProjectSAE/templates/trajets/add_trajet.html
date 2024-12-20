@@ -1,0 +1,85 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>Ajouter un Trajet</title>
+{% endblock %}
+
+{% block body %}
+<form method="post" action="/Trajet/add">
+    <fieldset class="container">
+        <legend class="text-center mb-3 fs-3">Ajouter un Trajet</legend>
+
+        <label class="mb-2" for="Horaire_depart">Horaire de départ : </label>
+        <input class="mb-2 rounded form-control" id="Horaire_depart" type="datetime-local" name="Horaire_depart"
+               size="25" value="" required>
+
+
+        <label class="mb-2" for="Nb_place">Nombre de place disponible :</label>
+        <input class="mb-2 rounded form-control" id="Nb_place" type="number" name="Nb_Place" size="25" value="" min="1"
+               max="7" required>
+
+        <label for="Id_ville_A">Ville d'arrivée :</label>
+        <select class="mb-2 rounded form-control" name="Id_ville_A" id="Id_ville_A" required>
+            <option value="">Sélectionner une ville d'arrivée</option>
+            {% if Ville | length >= 1 %}
+            {% for type in Ville %}
+            <option value="{{ type.Id_ville }}">{{ type.Nom_ville }}</option>
+            {% endfor %}
+            {% else %}
+            <p>Pas de ville</p>
+            {% endif %}
+        </select>
+
+
+        <label for="Id_ville_R">Ville de départ:</label>
+        <select class="mb-2 rounded form-control" name="Id_ville_R" id="Id_ville_R" required>
+            <option value="">Sélectionner une ville de départ</option>
+            {% if Ville | length >= 1 %}
+
+            {% for type in Ville %}
+            <option value="{{ type.Id_ville }}">{{ type.Nom_ville}}</option>
+            {% endfor %}
+            {% else %}
+            <p>Pas de ville</p>
+            {% endif %}
+        </select>
+
+
+        <label for="Immat">Plaque d'immatriculation:</label>
+        <select class="mb-2 rounded form-control" name="Immat" id="Immat" required>
+            <option value="">Sélectionner une plaque d'immatriculation</option>
+            {% if Vehicule | length >= 1 %}
+            {% for type in Vehicule %}
+            <option value="{{ type.Immat }}">{{ type.Immat}}</option>
+            {% endfor %}
+            {% else %}
+            <p>Pas de véhicule</p>
+            {% endif %}
+        </select>
+
+
+        <label for="Id_Inscription"> Habitant:</label>
+        <select class="mb-2 rounded form-control" name="Id_Inscription" id="Id_Inscription" required>
+            <option value="">Sélectionner une personne inscrite</option>
+            {% if Habitant | length >= 1 %}
+            {% for type in Habitant %}
+            <option value="{{ type.Id_Inscription }}">{{ type.Nom}}</option>
+            {% endfor %}
+            {% else %}
+            <p>Pas d'habitant inscrit</p>
+            {% endif %}
+        </select>
+
+        <button type="submit" class="btn btn_valider" name="valider">
+            Valider
+            <i class="bi bi-check2-square"></i>
+        </button>
+        <button type="reset" class="btn btn-outline-secondary" name="supprimer">
+            Réinitialiser
+            <i class="bi bi-arrow-clockwise"></i>
+        </button>
+
+
+    </fieldset>
+</form>
+{% endblock %}

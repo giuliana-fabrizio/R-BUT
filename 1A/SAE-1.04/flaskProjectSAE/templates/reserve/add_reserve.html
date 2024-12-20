@@ -1,0 +1,50 @@
+{% extends 'accueil.html' %}
+
+{% block title %}
+<title>ajouter Reservation</title>
+{% endblock %}
+
+{% block body %}
+<table class="container">
+    <thead>
+    <tr>
+        <th>Identifient Trajet</th>
+        <th>Horaire Reservation</th>
+        <th>Trajet</th>
+        <th>Voiture</th>
+        <th>Nombre de place</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if Trajets | length > 1 %}
+    {% for ligne in Trajets %}
+    <tr>
+        <th>{{ ligne.Id_trajet }}</th>
+        <th>{{ ligne.Horaire_depart }}</th>
+        <th>{{ ligne.Trajet }}</th>
+        <th>{{ ligne.Immat }}</th>
+        <th>{{ ligne.Nb_Place }}</th>
+        <th>
+            <form method="post" action="/Reserve/add">
+                <fieldset class="container">
+                    <input class="form-control" id="Id_trajet" type="hidden" name="Id_trajet" size="25"
+                           value="{{ ligne.Id_trajet}}">
+                    <label for="Id_inscription" class="control-label">Passager</label><br>
+                    <input class="form-control" id="Id_inscription" type="number" name="Id_inscription" size="25"
+                           value="">
+                    <input class="btn btn_valider" type="submit" value="Créer" name="Valider"
+                           onclick="return confirm('Etes-vous sur de vouloir ajouter une reservation')">
+                </fieldset>
+            </form>
+        </th>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td>pas de reservation possible</td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+{% endblock %}
