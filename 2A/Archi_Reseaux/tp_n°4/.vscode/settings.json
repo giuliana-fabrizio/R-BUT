@@ -1,0 +1,13 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "cstdio": "c",
+        "stdio.h": "c",
+        "socket.h": "c",
+        "tcp.h": "c",
+        "string.h": "c",
+        "netdb.h": "c",
+        "stdlib.h": "c",
+        "unistd.h": "c"
+    }
+}
