@@ -1,0 +1,69 @@
+{% extends "admin/layout_admin.html" %}
+
+{% block body %}
+    <div class="container-fluid">
+        {% if article_commande | length >= 1 %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom du meuble</th>
+                        <th>Quantite</th>
+                        <th>Prix (unitaire)</th>
+                        <th>Prix total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for ligne in article_commande %}
+                    <tr>
+                        <td>{{ ligne.nom }}</td>
+                        <td>{{ ligne.quantite }}</td>
+                        <td>{{ ligne.prix }}</td>
+                        <td>{{ ligne.prix_tot }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant Commande</th>
+                    <th>Date Commande</th>
+                    <th>Nombre de meubles</th>
+                    <th>Coût total</th>
+                    <th>État de la commande</th>
+                    <th>Utilisateur</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if commande | length >= 1 %}
+                    {% for cmd in commande %}
+                        <tr>
+                            <td>{{ cmd.id_cmd }}</td>
+                            <td>{{ cmd.date_achat }}</td>
+                            <td>{{ cmd.quantite }}</td>
+                            <td>{{ cmd.prix_tot }}</td>
+                            <td>{{ cmd.libelle_etat }} <span>({{ cmd.id_CmdEtat }})</span></td>
+                            <td>{{ cmd.username }} <span>({{ cmd.id_CmdUser }})</span></td>
+                        <td>
+                            <a href="/admin/commande/valider?id_cmd={{ cmd.id_cmd }}">Expédier</a>
+
+                            <a href="/admin/commande/show?id_cmd={{ cmd.id_cmd }}">Détails</a>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>
+                            <p>pas de commande</p>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

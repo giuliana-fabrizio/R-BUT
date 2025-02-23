@@ -1,0 +1,83 @@
+{% extends 'admin/layout_admin.html' %}
+
+{% block title %}
+    <title>afficher les meubles</title>
+{% endblock %}
+
+{% block body %}
+    <a href="/meuble/add">
+        ajouter un meuble
+        <i class="bi bi-plus-square"></i>
+    </a>
+    <br>
+    <br>
+
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+                <tr class="ligne_coloree">
+                    <th>nom du meuble</th>
+                    <th>type du meuble</th>
+                    <th>prix du meuble en €</th>
+                    <th>date de fabrication</th>
+                    <th>couleurs et matériaux disponibles(stock)</th>
+                    <th>image correspondante</th>
+                    <th>opération</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if meubles | length >= 1 %}
+                {% for ligne in meubles %}
+                    <tr>
+                        <td>{{ ligne.nom }} <span>({{ ligne.id_meuble }})</span></td>
+                        <td>{{ ligne.libelle_type }} <span>({{ ligne.id_MeubleType }})</span></td>
+                        <td>{{ ligne.prix }}</td>
+                        <td>{{ ligne.dateFabrication }}</td>
+
+                        <td>
+                            <select class="form-select rounded form-control" id="type_meuble">
+                                {% for coulStock in couleur %}
+                                    {% if coulStock.id_ColoreMeuble == ligne.id_meuble %}
+                                        <option>{{ coulStock.libelle_couleur }} - {{ coulStock.libelle_materiaux }}({{ coulStock.nbStock }})</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+
+                        <td>
+                            <span>{{ ligne.image }}</span>
+                            <img src={{ url_for('static', filename='images') }}/{{ ligne.image }} alt="" class="w-25">
+                        </td>
+                        <td>
+                            <div>
+                                <a href="/meubles/stock?id={{ ligne.id_meuble }}">
+                                    approvisionner
+                                    <i class="bi bi-pencil-fill"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="/meuble/edit/{{ ligne.id_meuble }}">
+                                    editer
+                                    <i class="bi bi-pencil-fill"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="/meuble/delete?id={{ ligne.id_meuble }}" onclick="return confirm('Êtes vous sûrs ?')">
+                                    supprimer
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                    <tr>
+                          <td>
+                              <p>pas du meuble</p>
+                          </td>
+                   </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

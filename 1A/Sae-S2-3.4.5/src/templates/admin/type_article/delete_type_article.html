@@ -1,0 +1,30 @@
+{% extends 'admin/layout_admin.html' %}
+
+{% block title %}
+    <title>Suppression impossible</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h2>Supression d'un type de meubles impossible</h2>
+        {% for nbTot in nbTot %}
+            <h4>il y a : {{ nbTot.nbMeublesSup }} meuble(s) à supprimer</h4>
+        {% endfor %}
+            <ul>
+                {% for ligne in meublesAssocies %}
+                    <li>
+                        nom : {{ ligne.nom }} - stock :{{ ligne.nbStock }}
+                        <a class="btn btn-sm btn-outline-light text-secondary" href="{{ url_for('admin_type_article.deleteMeuble_type_meuble',id=ligne.id_MeubleType, id_meuble=ligne.id_meuble) }}">
+                            supprimer
+                            <i class="bi bi-trash"></i>
+                        </a>
+
+                    {# <a class="btn btn-outline-danger" href="/admin/type-article/delete?id=4&amp;id_article=9">supprimer</a> #}
+                    {# <a class="btn btn-outline-warning" href="/admin/type-article/delete?id=4">supprimer</a> #}
+                    </li>
+                {% endfor %}
+            </ul>
+        <a href="/admin/type-article/show" class="lienEditSup">annuler</a>
+    </div>
+{% endblock %}
+

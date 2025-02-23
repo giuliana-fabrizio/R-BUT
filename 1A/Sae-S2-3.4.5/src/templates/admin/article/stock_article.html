@@ -1,0 +1,57 @@
+{% extends 'admin/layout_admin.html' %}
+
+{% block title %}
+    <title>gérer le stock</title>
+{% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    {% for ligne in meuble %}
+        <div class="container-fluid">
+            <form atcion="/meubles/stock" method="post">
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th>nom du meuble</th>
+                        <th>prix du meuble</th>
+                        <th>couleur du meuble</th>
+                        <th>materiaux du meuble</th>
+                        <th>quantité</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ ligne.nom }}</td>
+                            <td>{{ ligne.prix }}</td>
+                            <td>
+                                <select name="couleur" class="form-select rounded form-control" required>
+                                    <option value="">Choisir</option>
+                                    {% for couleur in couleur %}
+                                        <option value="{{ couleur.id_couleur }}">{{ couleur.libelle_couleur }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <select name="materiaux" class="form-select rounded form-control" required>
+                                    <option value="">Choisir</option>
+                                    {% for materiaux in materiaux %}
+                                        <option value="{{ materiaux.id_materiaux }}">{{ materiaux.libelle_materiaux }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" name="stock" class="mb-2 rounded form-control w-25" required>
+                            </td>
+                        <td>
+                            <input type="hidden" name="id_meuble" value="{{ ligne.id_meuble }}" class="mb-2 rounded form-control w-25">
+                            <button type="submit" class="btn btn-success btn-sm">Valider</button>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}
