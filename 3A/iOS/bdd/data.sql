@@ -1,0 +1,34 @@
+insert into places values (default, 'Bn Tea','Boutique de bubble tea','bntea.marseille@gmail.com', '04 65 96 11 44','https://www.facebook.com/bntea.marseille/', 43.29492, 5.37685);
+insert into places values (default, 'McDonald s','Chaîne classique de restauration rapide établie de longue date connue pour ses burgers et ses frites.','McDo.marseille@gmail.com', '04 91 02 17 22', 'https://www.mcdonalds.fr/', 43.28694, 5.38348);
+insert into places values (default, 'Ramen Go','Description','mail', 'telephone', 'site_web', 43.28822, 5.38261);
+insert into places values (default, 'Splendido','Description', 'mail', 'telephone', 'site_web', 43.29788, 5.37318);
+insert into places values (default, 'The Queen Victoria','Description', 'mail', 'telephone', 'site_web', 43.29345, 5.37179);
+insert into places values (default, 'Vapiano','Restaurant avec une ambiance détendue proposant des pâtes fraîches préparées sur commande, ainsi que des pizzas et des salades.', 'contact@vapiano.fr', '04 28 31 37 98', 'https://www.vapiano.fr', 43.30672, 5.36344);
+insert into places values (default, 'La bonne mère','Description', 'mail', 'telephone', 'site_web', 43.28357, 5.37362);
+insert into places values(default, 'La mère buonavista','Description', 'mail', 'telephone', 'site_web', 43.28499, 5.38386);
+insert into places values(default, 'La Caravelle','Description', 'mail', 'telephone', 'site_web', 43.29659, 5.372);
+insert into places values(default, 'GLACIER BIO','Description', 'mail', 'telephone', 'site_web', 43.296, 5.3747);
+insert into places values(default, '1860 Le Palais','Description', 'mail', 'telephone', 'site_web', 43.29613, 5.37509);
+
+
+insert into users values (default, 45, 'IUT Aix Marseille', 'David', 'Homme', 'Laiymani', 'Enseignant', 'DavidLaiymani@hotmail.com', 'Admin', '123456', 5);
+insert into users values (default, 44, 'Aéroport Marseille Provence', 'Riley', 'Homme', 'Davis', 'Contrôleur aérien', 'RileyDavis@hotmail.com', 'User', '123456', 6);
+insert into users values (default, 48, 'La Provence', 'Morgan', 'Homme', 'Smith', 'Journaliste', 'MorganSmith@hotmail.com', 'User', '123456', 6);
+insert into users values (default, 54, 'Euromed', 'Casey', 'Homme', 'Miller', 'Consultant en affaires', 'CaseyMiller@hotmail.com', 'User', '123456', 11);
+insert into users values (default, 35, 'Eurocopter', 'Taylor', 'Homme', 'Brown', 'Ingénieur aéronautique', 'TaylorBrown@hotmail.com', 'User', '123456', 4);
+insert into users values (default, 57, 'Société Marseillaise de Crédit', 'Alex', 'Femme', 'Jones', 'Conseiller bancaire', 'AlexJones@hotmail.com', 'User', '123456', 2);
+insert into users values (default, 39, 'Euromed', 'Avery', 'Homme', 'Davis', 'Consultant en affaires', 'AveryDavis@hotmail.com', 'User', '123456', 6);
+insert into users values (default, 44, 'La Provence', 'Jordan', 'Femme', 'Davis', 'Éditeur', 'JordanDavis@hotmail.com', 'User', '123456', 7);
+insert into users values (default, 31, 'CMA CGM', 'Avery', 'Femme', 'Davis', 'Agent maritime', 'AveryDavis@hotmail.com', 'User', '123456', 1);
+insert into users values (default, 39, 'Pernod Ricard', 'Avery', 'Homme', 'Johnson', 'Spécialiste marketing', 'AveryJohnson@hotmail.com', 'User', '123456', 11);
+insert into users values (default, 21, 'Aéroport Marseille Provence', 'Quinn', 'Femme', 'Davis', 'Agent de piste', 'QuinnDavis@hotmail.com', 'User', '123456', 1);
+insert into users values (default, 50, 'Sodexo Marseille', 'Jamie', 'Homme', 'Jones', 'Chef de cuisine', 'JamieJones@hotmail.com', 'User', '123456', 3);
+insert into users values (default, 47, 'Société Marseillaise de Crédit', 'Casey', 'Femme', 'Davis', 'Analyste financier', 'CaseyDavis@hotmail.com', 'User', '123456', 2);
+insert into users values (default, 64, 'Onet', 'Avery', 'Homme', 'Garcia', 'Superviseur de nettoyage', 'AveryGarcia@hotmail.com', 'User', '123456', 2);
+insert into users values (default, 60, 'Pernod Ricard', 'Morgane', 'Femme', 'Williams', 'Chimiste', 'MorganeWilliams@hotmail.com', 'User', '123456', 10);
+insert into users values (default, 31, 'Société Marseillaise de Crédit', 'Alex', 'Homme', 'Martinez', 'Analyste financier', 'AlexMartinez@hotmail.com', 'User', '123456', 3);
+insert into users values (default, 51, 'Aéroport Marseille Provence', 'Morgan', 'Homme', 'Martinez', 'Contrôleur aérien', 'MorganMartinez@hotmail.com', 'User', '123456', 11);
+insert into users values (default, 52, 'Onet', 'Jamie', 'Femme', 'Miller', 'Technicien de maintenance', 'JamieMiller@hotmail.com', 'User', '123456', 6);
+insert into users values (default, 29, 'Euromed', 'Taylor', 'Homme', 'Johnson', 'Professeur de management', 'TaylorJohnson@hotmail.com', 'User', '123456', 8);
+insert into users values (default, 50, 'Société Marseillaise de Crédit', 'Taylor', 'Homme', 'Jones', 'Conseiller bancaire', 'TaylorJones@hotmail.com', 'User', '123456', 4);
+insert into users values (default, 62, 'Eurocopter', 'Chris', 'Homme', 'Smith', 'Technicien en maintenance en hélicoptères', 'ChrisSmith@hotmail.com', 'User', '123456', 10);
